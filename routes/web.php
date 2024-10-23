@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('profile');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::get('/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+
+//profile picture for users
+Route::post('/profile-picture', [App\Http\Controllers\HomeController::class, 'profilePictureUpload'])->name('profile.picture.upload');
+
